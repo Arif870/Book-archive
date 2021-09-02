@@ -1,3 +1,15 @@
+// spinner toggle function
+
+let spinnerToggle = displayStyle => {
+  document.getElementById("spinner").style.display = displayStyle;
+};
+let resultToggle = displayStyle => {
+  document.getElementById("row").style.display = displayStyle;
+};
+let bookFoundToggle = displayStyle => {
+  document.getElementById("book-found").style.display = displayStyle;
+};
+
 document.getElementById("search").addEventListener("click", () => {
   // get book name from box
 
@@ -13,8 +25,12 @@ document.getElementById("search").addEventListener("click", () => {
     let bookFound = document.getElementById("book-found");
     bookFound.innerHTML = "";
   } else {
-    // book fetch
+    spinnerToggle("block");
+    resultToggle("none");
+    bookFoundToggle("none");
     result.style.display = "none";
+
+    // book fetch
     let loadData = bookname => {
       let url = `https://openlibrary.org/search.json?q=${bookname}`;
       fetch(url)
@@ -46,12 +62,16 @@ document.getElementById("search").addEventListener("click", () => {
       let row = document.getElementById("row");
       row.textContent = "";
       let details = data.docs;
+
       details.forEach(favBooks => {
+        let author = favBooks.author_name;
+        let publisher = favBooks.publisher;
+
         let div = document.createElement("div");
         div.classList.add("col");
         let bookTitle = favBooks.title.slice(0, 10);
         div.innerHTML = `
-          <div class="card mb-3 shadow rounded" style="max-width: 540px">
+          <div class="card mb-3 shadow rounded">
             <div class="row g-0">
               <div class="col-md-4">
                 <img
@@ -65,8 +85,8 @@ document.getElementById("search").addEventListener("click", () => {
                 <div class="card-body">
                   <h1 class="card-title text-success">${bookTitle}</h1>
                   <hr />
-                  <h3 class="lead"><span class="fw-bold">Author : </span> ${favBooks.author_name}</h3>
-                  <p class="lead"><span class="fw-bold">Publisher : </span> ${favBooks.publisher}</p>
+                  <h3 class="lead"><span class="fw-bold">Author : </span> ${author}</h3>
+                  <p class="lead"><span class="fw-bold">Publisher : </span> ${publisher}</p>
 
                   <p class="card-text">
                     <small class="text-muted"
@@ -80,6 +100,9 @@ document.getElementById("search").addEventListener("click", () => {
         `;
         row.appendChild(div);
       });
+      spinnerToggle("none");
+      resultToggle("flex");
+      bookFoundToggle("block");
     };
   }
 });

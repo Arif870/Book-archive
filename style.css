@@ -15,7 +15,6 @@ p#book-found {
 }
 
 /*  spinner css  */
-
-img#spinner {
-  display: none !important;
+#spinner {
+  display: none;
 }
