@@ -2,6 +2,20 @@ body {
   background-image: url(./bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: fixed;
+  height: 100vh;
+  background-attachment: fixed;
   font-family: poppins;
+}
+
+p#result {
+  display: none;
+}
+p#book-found {
+  display: none;
+}
+
+/*  spinner css  */
+
+img#spinner {
+  display: none !important;
 }

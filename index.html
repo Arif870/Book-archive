@@ -26,51 +26,34 @@
         <div class="col">
           <div class="input-group mb-3 w-75 mx-auto mt-5">
             <input
+              id="input_box"
               type="text"
               class="form-control border-success py-3 shadow"
-              placeholder="Search your favouritee books..."
+              placeholder="Search your favourite books..."
             />
-            <button class="btn btn-success" type="button" id="button-addon2">
+            <button class="btn btn-success" type="button" id="search">
               Search
             </button>
           </div>
-          <p class="text-center text-danger fs-2">Total result found : 1000</p>
+          <p class="text-center text-danger fs-2" id="result"></p>
+          <p class="text-center text-success fs-3" id="book-found">
+            <span id="resultFound">1000</span>
+          </p>
+
+          <!-- preloader  -->
+          <img
+            id="spinner"
+            class="w-25 d-block mx-auto"
+            src="./spinner3.gif"
+            alt=""
+          />
         </div>
       </div>
     </div>
 
     <!-- Show Books  -->
     <div class="container mt-5">
-      <div class="row row-cols-md-2">
-        <div class="col">
-          <div class="card mb-3 shadow rounded" style="max-width: 540px">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img
-                  class="card-img-top w-100 h-100"
-                  src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-                  class="img-fluid rounded-start"
-                  alt="..."
-                />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h1 class="card-title text-success">JavaScript</h1>
-                  <hr />
-                  <h3 class="lead">Author : arif-uz-zaman</h3>
-                  <p class="lead">Publisher : Sumaiya Alomgir</p>
-
-                  <p class="card-text">
-                    <small class="text-muted"
-                      >First Published : 24 aug 1996</small
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="row row-cols-md-2" id="row"></div>
     </div>
 
     <!-- bootstrap link  -->
