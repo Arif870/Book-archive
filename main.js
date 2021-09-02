@@ -19,6 +19,7 @@ document.getElementById("search").addEventListener("click", () => {
 
   // empty input box validation
   if (inputValue === "") {
+    resultToggle("none");
     let result = document.getElementById("result");
     result.style.display = "block";
     result.innerText = "Field must not be empty !!";
